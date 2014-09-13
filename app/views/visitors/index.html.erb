@@ -1,8 +1,10 @@
 <div class="container-fluid">
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left side-container">
-
-    <p>Side Nav</p>
-    <ul class="nav nav-pills nav-stacked">
+    <div class="nav-header">
+      <%= image_tag('wkt_logo.png') %>
+      <h1>Menu</h1>
+    </div>
+    <ul class="nav nav-pills nav-stacked side-nav">
       <li><a><i class="fa fa-camera"></i>Submit a Picture</a>
         <%= form_for @post, html: { role: 'form' } do |f| %>
           <div class="form-group">
@@ -23,17 +25,19 @@
           <%= f.submit 'Submit', class: 'btn btn-default' %>
         <% end %>
       </li>
-      <li><a>Gallery</a>
-      </li>
-      <li><a>link 1</a></li>
-      <li><a>link 1</a></li>
-    </ul>
 
-    <a href="#" id="refresh" class="btn btn-default">Refresh Map</a>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right map-container">
-    <div id="map_canvas" style="width: 100%; height: 100%"></div>
-  </div>
+      <li><a><i class="fa fa-file-image-o"></i> Gallery</a></li>
+      <li><a><i class="fa fa-camera"></i> link 1</a></li>
+      <li><a><i class="fa fa-camera"></i> link 1</a></li>
+    </ul>
+    <div class="mobile-menu"><i class="fa fa-caret-square-o-down"></i></div>
+  </ul>
+
+  <a href="#" id="refresh" class="btn btn-default">Refresh Map</a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right map-container">
+  <div id="map_canvas" style="width: 100%; height: 100%"></div>
+</div>
 </div>
 
 

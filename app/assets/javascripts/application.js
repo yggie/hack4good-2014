@@ -58,7 +58,7 @@ function refreshMap() {
       content: '<div id="content">'+ 
         '<img src="https://i.imgur.com/f3GyF7z.jpg"></div>',
       maxWidth: 400,
-      maxHeight: 400
+      maxHeight: 40
     });
 
     google.maps.event.addListener(m, 'click', function() {
@@ -84,5 +84,16 @@ $(document).on('ready', function () {
         refreshMap();
       },
     });
+  });
+
+  $('#refresh').click();
+
+  $(".mobile-menu").click( function() {
+    $(this).closest(".side-container").toggleClass("mobile-show", 500);
+    $(this).find(".fa").switchClass("fa-caret-square-o-down", "fa-caret-square-o-up", 500);
+  });
+
+  $(".side-nav li").click( function() {
+    $(this).find(".nav").toggle(500);
   });
 });
