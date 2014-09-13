@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+gem 'dragonfly'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -26,4 +27,8 @@ group :development, :test do
   gem 'binding_of_caller', '~> 0.7.2'
   # improves upon the standard Rails error pages
   gem 'better_errors', '~> 2.0.0'
+end
+
+group :production do
+  gem 'rack-cache', require: 'rack/cache'
 end
