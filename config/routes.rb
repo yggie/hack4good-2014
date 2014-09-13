@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:create, :index]
 
+  resources :collections, only: [:create]
+
   namespace :posts do
     get :search
   end
