@@ -1,7 +1,20 @@
 class PhotosController < ApplicationController
-  def create
-    @photo = Photo.create(params.require(:photo).permit!)
+  def new
+    @photo = Photo.new
+  end
 
-    redirect_to root_path
+  def create
+    file = params[:photo][:image]
+    @photo = Photo.new(params.require(:photo).permit!)
+
+    case file.content_type
+    when 'image/jpeg'
+      @exif = EXIFR::JPEG.new(file.tempfile.path)
+
+    else
+      raise 'Unsupported extension'
+    end
+
+    render json: @exif.gps
   end
 end
