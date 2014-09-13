@@ -24,7 +24,7 @@ function initialize() {
 
   var mapOptions = {
     center: new google.maps.LatLng(70.8, -1.3),
-    zoom: 11,
+    zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   map = new google.maps.Map(mapCanvas, mapOptions)
@@ -64,6 +64,17 @@ function refreshMap() {
     markers.pop().map = null;
   }
 
+  function generateInfoWindowContent(post) {
+    return '<div id="content"><img src="' + post.photo.thumbnail + '"></div>'
+  }
+
+  var info = new google.maps.InfoWindow({
+    content: '<div id="content">'+
+      '<img src=""></div>',
+    maxWidth: 400,
+    maxHeight: 40
+  });
+
   for (var i = 0; i < posts.length; i++) {
     var post = posts[i];
 
@@ -75,16 +86,12 @@ function refreshMap() {
       title: 'empty string',
     });
 
-    var info = new google.maps.InfoWindow({
-      content: '<div id="content">'+
-        '<img src="' + post.photo.thumbnail + '"></div>',
-      maxWidth: 400,
-      maxHeight: 40
-    });
-
-    google.maps.event.addListener(m, 'click', function() {
-      info.open(map,m);
-    });
+    google.maps.event.addListener(m, 'click', (function (infowindow, marker, post) {
+      return function () {
+        infowindow.setContent(generateInfoWindowContent(post));
+        infowindow.open(map, this);
+      };
+    })(info, m, post));
 
     markers.push(m);
   }
