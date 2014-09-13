@@ -55,8 +55,8 @@ function refreshMap() {
     });
 
     var info = new google.maps.InfoWindow({
-      content: '<div id="content">'+ 
-        '<img src="https://i.imgur.com/f3GyF7z.jpg"></div>',
+      content: '<div id="content">'+
+        '<img src="' + post.photo.thumbnail + '"></div>',
       maxWidth: 400,
       maxHeight: 40
     });

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def search
     @posts = Post.within(params.permit(:latitude, :longitude, :miles))
 
-    render json: @posts.as_json(include: :photo)
+    render json: @posts.as_json(except: [:id], include: { photo: { except: [:id, :image_uid, :post_id], methods: :thumbnail } })
   end
 
   def create

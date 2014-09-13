@@ -3,6 +3,10 @@ class Photo < ActiveRecord::Base
 
   dragonfly_accessor :image
 
+  def thumbnail
+    image.thumb('150x150').url
+  end
+
   def exif
     return @exif if @exif
 
