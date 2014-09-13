@@ -77,7 +77,7 @@ function refreshMap() {
 
     var info = new google.maps.InfoWindow({
       content: '<div id="content">'+
-        '<img src="' + post.photo. + '"></div>',
+        '<img src="' + post.photo.thumbnail + '"></div>',
       maxWidth: 400,
       maxHeight: 40
     });
