@@ -16,13 +16,14 @@
 
 var posts = [],
     markers = [],
-    map;
+    map,
+    lastCircle;
 
 function initialize() {
   var mapCanvas = document.getElementById('map_canvas');
 
   var mapOptions = {
-    center: new google.maps.LatLng(50.8, -1.3),
+    center: new google.maps.LatLng(70.8, -1.3),
     zoom: 11,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
@@ -34,9 +35,29 @@ function initialize() {
       map.setCenter(initialLocation);
     });
   }
+  google.maps.event.addListener(map, 'click', function(event) {
+    var options = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.7,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: event.latLng,
+      radius: 8000
+    };
+
+    if(lastCircle != null) {
+      lastCircle.setMap(null);
+    }
+
+    lastCircle = new google.maps.Circle(options);
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 
 function refreshMap() {
   while (markers.length) {
