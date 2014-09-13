@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:new, :create]
 
-  resources :posts, only: [:create]
+  resources :posts, only: [:create, :index]
 
   namespace :posts do
     get :search

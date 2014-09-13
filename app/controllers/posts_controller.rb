@@ -2,12 +2,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+    render json: @posts.as_json(Post.json_params)
   end
 
   def search
     @posts = Post.within(params.permit(:latitude, :longitude, :miles))
 
-    render json: @posts.as_json(except: [:id], include: { photo: { except: [:id, :image_uid, :post_id], methods: :thumbnail } })
+    render json: @posts.as_json(Post.json_params)
   end
 
   def create
@@ -17,6 +19,7 @@ class PostsController < ApplicationController
     if @photo.metadata.gps
       @post.latitude = @photo.metadata.gps.latitude
       @post.longitude = @photo.metadata.gps.longitude
+      @post.taken_at = @photo.metadata.date_time
     end
     @post.photo = @photo
 
