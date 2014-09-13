@@ -14,15 +14,16 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+group :development, :test do
+  # used by pry to format output in the console
+  gem 'awesome_print', '~> 1.2.0'
+  # combines pry and byebug (debugger for ruby > 2.0)
+  gem 'pry-byebug', '~> 1.3.3'
+  # hooks into rails console to enable the pry console
+  gem 'pry-rails', '~> 0.3.2'
+  # used together with better_errors to provide an interactive console in the
+  # development error page
+  gem 'binding_of_caller', '~> 0.7.2'
+  # improves upon the standard Rails error pages
+  gem 'better_errors', '~> 2.0.0'
+end
