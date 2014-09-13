@@ -7,7 +7,8 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection = Collection.new(params.require(:collection).permit(:radius, :latitude, :longitude, :criteria, :title))
+    @collection = Collection.new(params.require(:collection)
+      .permit(:radius, :latitude, :longitude, :criteria, :title, :radius, :start_date, :end_date))
 
     if @collection.save
     else
