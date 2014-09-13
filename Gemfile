@@ -8,6 +8,7 @@ gem 'pg'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 4.0.3'
 gem 'autoprefixer-rails'
+gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

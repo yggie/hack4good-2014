@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left side-container">
+
+    <p>Side Nav</p>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a><i class="fa fa-camera"></i>Submit a Picture</a>
+        <%= form_for @post, html: { role: 'form' } do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control', placeholder: 'Enter email' %>
+
+            <%= f.fields_for :photo, html: { role: 'form' } do |f2| %>
+              <%= f2.label :image, 'Select Your Image' %>
+              <%= f2.file_field :image %>
+              <p class="help-block">Example block-level help text here.</p>
+            <% end %>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Accept Agreement
+            </label>
+          </div>
+          <%= f.submit 'Submit', class: 'btn btn-default' %>
+        <% end %>
+      </li>
+      <li><a>Gallery</a>
+      </li>
+      <li><a>link 1</a></li>
+      <li><a>link 1</a></li>
+    </ul>
+
+    <a href="#" id="refresh" class="btn btn-default">Refresh Map</a>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right map-container">
+    <div id="map_canvas" style="width: 100%; height: 100%"></div>
+  </div>
+</div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
