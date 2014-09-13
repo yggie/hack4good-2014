@@ -114,7 +114,7 @@ $(document).on('ready', function () {
     $(this).find(".fa").switchClass("fa-caret-square-o-down", "fa-caret-square-o-up", 500);
   });
 
-  $(".side-nav li").click( function() {
-    $(this).find(".nav").toggle(500);
+  $("side-nav .parent").click( function() {
+    $(this).parent().find(".sub-nav").toggle(500);
   });
 });
