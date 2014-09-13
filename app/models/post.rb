@@ -1,6 +1,5 @@
 class Post < ActiveRecord::Base
 
-  belongs_to :collection
   has_one :photo
 
   validates :email, presence: true
